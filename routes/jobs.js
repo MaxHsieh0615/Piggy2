@@ -6,11 +6,11 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 // Display List of Jobs
-router.get('/', (req, res) => 
+router.get('/', (req, res) =>
   Job.findAll()
     .then(jobs => res.render('jobs', {
-        jobs
-      }))
+      jobs
+    }))
     .catch(err => console.log(err)));
 
 // Display add job form
@@ -18,35 +18,36 @@ router.get('/add', (req, res) => res.render('add'));
 
 // Add a job
 router.post('/add', (req, res) => {
+  console.log(req.body);
   let { title, description, budget, job_status, job_owner } = req.body;
   let errors = [];
 
   // Validate Fields
-  if(!title) {
+  if (!title) {
     errors.push({ text: 'Please add a title' });
   }
-  if(!description) {
+  if (!description) {
     errors.push({ text: 'Please add a description' });
   }
-  if(!job_status) {
-    errors.push({ text: 'Open or Closed' });
-  }
-  if(!job_owner) {
+  // if(!job_status) {
+  //   errors.push({ text: 'Open or Closed' });
+  // }
+  if (!job_owner) {
     errors.push({ text: 'Enter a job owner' });
   }
 
   // Check for errors
-  if(errors.length > 0) {
+  if (errors.length > 0) {
     res.render('add', {
       errors,
-      title, 
-      description,  
-      budget, 
+      title,
+      description,
+      budget,
       job_status,
       job_owner
     });
   } else {
-    if(!budget) {
+    if (!budget) {
       budget = 'Unknown';
     } else {
       budget = `$${budget}`;
@@ -72,13 +73,35 @@ router.get('/search', (req, res) => {
   // Make lowercase
   term = term.toLowerCase();
 
-  Job.findAll({ where: 
-      { title: { [Op.like]: '%' + term + '%' }, 
-        description: { [Op.like]: '%' + term + '%' } 
-      } 
-    })
+  Job.findAll({
+    where:
+    {
+      title: { [Op.like]: '%' + term + '%' },
+      description: { [Op.like]: '%' + term + '%' }
+    }
+  })
     .then(jobs => res.render('jobs', { jobs }))
     .catch(err => console.log(err));
+});
+
+
+router.get('/edit/:id', (req, res) => {
+  console.log(req.params.id);
+  // res.send(req.params.id);
+  Job.findOne({
+    where:
+    {
+      id: req.params.id
+    }
+  })
+    .then(jobs => {
+      console.log(jobs.dataValues);
+      var jobInfo = jobs.dataValues;
+      res.render('edit', { job: jobInfo })
+    })
+    .catch(err => console.log(err));
+
+
 });
 
 module.exports = router;

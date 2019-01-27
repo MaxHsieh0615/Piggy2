@@ -1,6 +1,7 @@
 <section id="add" class="container">
   <div class="form-wrap">
     <h1>Add A Job</h1>
+    <h1>{{job.description}}</h1>
     <p>Enter a job to add to the list!</p>
     {{#each errors}}
     <div class="error">
@@ -10,8 +11,8 @@
     <form action="/jobs/add" method="POST">
       <div class="input-group">
         <label for="title">Job Title</label>
-        <input type="text" name="title" id="title" class="input-box" placeholder="example: Sort the laundry" maxlength="100"
-          value={{title}}>
+        <input type="text" name="title" id="title" class="input-box" maxlength="100"
+          value={{job.title}}>
       </div>
       <div class="input-group">
         <label for="description">Job Description</label>
