@@ -22,21 +22,24 @@
         <label for="budget">Budget</label>
         <input type="number" name="budget" id="budget" class="input-box" placeholder="1, 2, or 5" value={{budget}}>
       </div>
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Dropdown button </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Open</a>
-        <a class="dropdown-item" href="#">Closed</a>
+      <div class="input-group">
+        <label for="job_status">Job Status</label>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary active">
+            <input type="radio" name="Open" id="Open" value={{job_status}} autocomplete="off"> Open
+          </label>
+          <label class="btn btn-secondary">
+            <input type="radio" name="Closed" id="Closed" autocomplete="off" value={{job_status}}> Closed
+          </label>
+        </div>
       </div>
-  </div>
-  </div>
-  <div class="input-group">
-    <label for="job_owner">Job Owner</label>
-    <input type="text" name="job_owner" id="job_owner" class="input-box" placeholder="Child name" maxlength="100" value={{job_owner}}>
-  </div>
+      <div class="input-group">
+        <label for="job_owner">Job Owner</label>
+        <input type="text" name="job_owner" id="job_owner" class="input-box" placeholder="Child name" maxlength="100"
+          value={{job_owner}}>
+      </div>
 
-  <input type="submit" value="Add Job" class="btn btn-reverse">
-  </form>
+      <input type="submit" value="Add Job" class="btn btn-reverse">
+    </form>
   </div>
 </section>
