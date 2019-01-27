@@ -10,6 +10,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+require('dotenv').config();
 // Sets up the Express App
 // =============================================================
 const app = express();

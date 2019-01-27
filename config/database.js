@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-module.exports =  new Sequelize("piggybusiness", "root", "rootroot321*", {
+module.exports =  new Sequelize("piggybusiness", process.env.user, process.env.pw, {
   host: "localhost",
   port: 3306,
   dialect: "mysql",
