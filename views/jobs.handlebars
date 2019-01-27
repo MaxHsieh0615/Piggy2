@@ -1,0 +1,23 @@
+<section id="jobs" class="container">
+    <h1>All Jobs</h1>
+
+    {{#each jobs}}
+      <div class="job">
+      <h3>{{title}}</h3>
+      <p>{{description}}</p>
+      <ul>
+        <li>Reward Value: {{budget}}</li>
+      </ul>
+      <div class="keyword">
+        <small>Job Status: <span>{{job_status}}</span></small>
+        <br>
+        <small>Job Owner: <span>{{job_owner}}</span></small>
+      </div>
+      <button id="edit">Edit</button><button id="delete">Delete</button>
+    </div>
+    
+    {{else}}
+      <p>No jobs available</p>
+    {{/each}}
+    
+  </section>

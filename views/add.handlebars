@@ -1,0 +1,38 @@
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Add A Job</h1>
+      <p>Enter a job to add to the list!</p>
+      {{#each errors}}
+        <div class="error">
+          <p>{{text}}</p>
+        </div>
+      {{/each}}
+      <form action="/jobs/add" method="POST">
+        <div class="input-group">
+          <label for="title">Job Title</label>
+          <input type="text" name="title" id="title" class="input-box" placeholder="example: Sort the laundry"
+            maxlength="100" value={{title}}>
+        </div>
+        <div class="input-group">
+          <label for="description">Job Description</label>
+          <textarea name="description" id="description" class="input-box" placeholder="Describe the details of the job requested"
+            rows="10">{{description}}</textarea>
+        </div>
+        <div class="input-group">
+          <label for="budget">Budget</label>
+          <input type="number" name="budget" id="budget" class="input-box" placeholder="1, 2, or 5" value={{budget}}>
+        </div>
+        <div class="input-group">
+          <label for="job_status">Job Status</label>
+          <input type="text" name="job_status" id="job_status" class="input-box" placeholder="Open or Closed" value={{job_status}}>
+        </div>
+        <div class="input-group">
+          <label for="job_owner">Job Owner</label>
+          <input type="text" name="job_owner" id="job_owner" class="input-box" placeholder="Child name"
+          maxlength="100" value={{job_owner}}>
+        </div>
+        
+        <input type="submit" value="Add Job" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>

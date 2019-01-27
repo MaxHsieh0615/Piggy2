@@ -1,0 +1,23 @@
+<section id="add" class="container">
+    <div class="form-wrap">
+      <h1>Add A Child</h1>
+      <p>Setup a new child</p>
+      {{#each errors}}
+        <div class="error">
+          <p>{{text}}</p>
+        </div>
+      {{/each}}
+      <form action="/child/addchild" method="POST">
+        <div class="input-group">
+          <label for="child_name">Child Name</label>
+          <input type="text" name="child_name" id="child_name" class="input-box" placeholder="Child name"
+            maxlength="100" value={{child_name}}>
+        </div>
+        <div class="input-group">
+          <label for="piggy">Piggy Value</label>
+          <input type="number" name="piggy" id="piggy" class="input-box" placeholder="$0.00" value={{piggy}}>
+        </div>
+        <input type="submit" value="Add Child" class="btn btn-reverse">
+      </form>
+    </div>
+  </section>
