@@ -1,0 +1,16 @@
+<section id="child" class="container">
+    <h1>All Children</h1>
+
+    {{#each child}}
+      <div class="job">
+      <h3>{{child_name}}</h3>
+      <ul>
+        <li>Piggy Bank Amount: {{piggy}}</li>
+      </ul>
+      <button id="edit">Edit</button><button id="delete">Delete</button>
+    </div>
+    {{else}}
+      <p>No child added. Please add a child.</p>
+    {{/each}}
+    
+  </section>
