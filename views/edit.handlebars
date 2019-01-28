@@ -1,14 +1,14 @@
 <section id="add" class="container">
   <div class="form-wrap">
-    <h1>Add A Job</h1>
-    <h1>{{job.description}}</h1>
-    <p>Enter a job to add to the list!</p>
+    <h1>Edit Job</h1>
+    
+    <p>Edit job details.  Change status to "Complete" to add earnings to Piggy!</p>
     {{#each errors}}
     <div class="error">
       <p>{{text}}</p>
     </div>
     {{/each}}
-    <form action="/jobs/add" method="POST">
+    <form action="/edit/{{job.id}}" class= "job-item" method="PUT">
       <div class="input-group">
         <label for="title">Job Title</label>
         <input type="text" name="title" id="title" class="input-box" maxlength="100"
@@ -17,11 +17,11 @@
       <div class="input-group">
         <label for="description">Job Description</label>
         <textarea name="description" id="description" class="input-box" placeholder="Describe the details of the job requested"
-          rows="10">{{description}}</textarea>
+          rows="10">{{job.description}}</textarea>
       </div>
       <div class="input-group">
         <label for="budget">Budget</label>
-        <input type="number" name="budget" id="budget" class="input-box" placeholder="1, 2, or 5" value={{budget}}>
+        <input type="number" name="budget" id="budget" class="input-box"  value={{job.budget}}>
       </div>
       <div class="input-group">
         <label for="job_status">Job Status</label>
@@ -37,10 +37,10 @@
       <div class="input-group">
         <label for="job_owner">Job Owner</label>
         <input type="text" name="job_owner" id="job_owner" class="input-box" placeholder="Child name" maxlength="100"
-          value={{job_owner}}>
+          value={{job.job_owner}}>
       </div>
 
-      <input type="submit" value="Add Job" class="btn btn-reverse">
+      <button type="submit" value="Update" class="btn btn-reverse Update">Update</button>
     </form>
   </div>
 </section>

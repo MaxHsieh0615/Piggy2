@@ -84,9 +84,9 @@ router.get('/search', (req, res) => {
     .catch(err => console.log(err));
 });
 
-
+//Edit jobs
 router.get('/edit/:id', (req, res) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   // res.send(req.params.id);
   Job.findOne({
     where:
@@ -102,6 +102,26 @@ router.get('/edit/:id', (req, res) => {
     .catch(err => console.log(err));
 
 
+
+});
+// PUT route for updating todos. We can get the updated todo data from req.body
+router.put("/edit/:id", function (req, res) {
+  // Update takes in an object describing the properties we want to update, and
+  // we use where to describe which objects we want to update
+  console.log(req.params.id);
+  db.Job.update({
+    title: req.body.title,
+    description: req.body.description,
+    budget: req.body.budget,
+    job_status,
+    job_owner
+  }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (jobUpdate) {
+      res.json(jobUpdate);
+    });
 });
 
 module.exports = router;
