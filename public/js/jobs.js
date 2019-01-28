@@ -1,29 +1,23 @@
 $(document).ready(function () {
   /* global moment */
   console.log("testing");
-  var updating = false;
 
   $(".edit").on('click', function () {
     var jobID = $(this).attr('jobid');
     console.log(jobID);
     window.location.href = '/jobs/edit/' + jobID;
-  })
+  });
+
+  $(".delete").on('click', function () {
+    event.stopPropagation();
+    var id = $(this).attr('jobid');
+    //pulls the ID
+    console.log(id);
+    $.ajax({
+      method: "DELETE",
+      url: "/jobs/edit/" + id
+    });
+  });
 
 
-  /*$(".Update").on("click", editTodo);
-  function editTodo(event) {
-    event.preventDefault();
-    var currentTodo = $(this).data("job");
-    console.log("hello world");
-    $.post("/test",{title:"test",description:"test"})
-      .then(function(result){
-        console.log(result);
-        console.log("Dennis");
-      });
-  }*/
-  //   // $(this).children().hide();
-  //   // $(this).children("input.edit").val(currentTodo.text);
-  //   // $(this).children("input.edit").show();
-  //   // $(this).children("input.edit").focus();
-  // }
 });

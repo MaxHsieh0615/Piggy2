@@ -121,12 +121,26 @@ router.post("/edit/:id", function (req, res) {
       }
     }).then(function (jobUpdate) {
       Job.findAll()
-      .then(jobs => res.render('jobs', {
-        jobs
-      }))
-      .catch(err => console.log(err));
+        .then(jobs => res.render('jobs', {
+          jobs
+        }))
+        .catch(err => console.log(err));
 
     });
+});
+
+// DELETE route for deleting jobs. We can get the id of the job to be deleted from
+// req.params.id
+router.delete("/edit/:id", function (req, res) {
+  // We just have to specify which job we want to destroy with "where"
+  Job.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (jobDelete) {
+    res.json(jobDelete);
+  });
+
 });
 
 module.exports = router;
