@@ -105,22 +105,27 @@ router.get('/edit/:id', (req, res) => {
 
 });
 // PUT route for updating todos. We can get the updated todo data from req.body
-router.put("/edit/:id", function (req, res) {
+router.post("/edit/:id", function (req, res) {
   // Update takes in an object describing the properties we want to update, and
   // we use where to describe which objects we want to update
-  console.log(req.params.id);
-  db.Job.update({
+  console.log("Test got called");
+  Job.update({
     title: req.body.title,
     description: req.body.description,
     budget: req.body.budget,
-    job_status,
-    job_owner
+    job_status: req.body.job_status,
+    job_owner: req.body.job_owner
   }, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function (jobUpdate) {
-      res.json(jobUpdate);
+      Job.findAll()
+      .then(jobs => res.render('jobs', {
+        jobs
+      }))
+      .catch(err => console.log(err));
+
     });
 });
 
