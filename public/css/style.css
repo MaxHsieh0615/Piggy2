@@ -3,7 +3,7 @@
 :root {
   --primary-color: #568c9b;
   --primary-hover-color: #64a5b7;
-  --bg-color: #333;
+  --bg-color: #74c2c1;
   --box-shadow: 3px 4px 12px rgba(0, 0, 0, 0.7);
 }
 
@@ -37,6 +37,7 @@ a:hover {
   padding: 1rem 4rem;
   margin: auto;
   overflow: hidden;
+  
 }
 
 .error {
@@ -63,6 +64,7 @@ header nav ul {
 
 header nav li {
   margin: 0 1rem;
+  
 }
 
 /* Login Button Spacing */
@@ -79,7 +81,7 @@ header.inner {
 
 /* Buttons */
 .btn {
-  color: #fff;
+  color: #333;
   padding: 0.6rem;
   border: 1px solid #ccc;
   transition: all 0.7s;
@@ -88,7 +90,7 @@ header.inner {
 .btn:hover {
   background: var(--primary-color);
   border: 1px solid var(--primary-color);
-  color: #fff;
+  color: #333;
 }
 
 .btn-reverse {
@@ -162,9 +164,10 @@ input[type='search'] {
 
 /* Jobs */
 .job {
-  background: var(--bg-color);
+  /* background: var(--bg-color); */
+  /* background:#333; */
   border-bottom: 4px solid var(--primary-color);
-  color: #fff;
+  color: #333;
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: var(--box-shadow);
@@ -187,8 +190,9 @@ input[type='search'] {
 /* Form */
 .form-wrap {
   margin: auto;
-  background: var(--bg-color);
-  color: #fff;
+  /* background: var(--bg-color); */
+  color:#333;
+  /* color: #fff; */
   padding: 1rem 3rem 3rem;
   margin-top: 3rem;
   border-bottom: 4px solid var(--primary-color);
