@@ -31,15 +31,17 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Static directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public/')));
 
 // Index route
-app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
+app.get('/', (req, res) => res.render('splash', { layout: 'landing' }));
 
 // Routes
 // =============================================================
 app.use('/jobs', require('./routes/jobs'));
 app.use('/child', require('./routes/child'));
+app.use('/', require('./routes/index'));
+
 
 const PORT = process.env.PORT || 8000;
 

@@ -8,9 +8,9 @@
     </div>
     {{/each}}
     <form action="/jobs/add" method="POST">
-      <div class="input-group">
+      <div class="input-field col s12">
         <label for="title">Job Title</label>
-        <input type="text" name="title" id="title" class="input-box" placeholder="example: Sort the laundry" maxlength="100"
+        <input type="text" name="title" id="title" class="input-box" maxlength="100"
           value={{title}}>
       </div>
       <div class="input-group">
