@@ -84,9 +84,9 @@ router.get('/search', (req, res) => {
     .catch(err => console.log(err));
 });
 
-
+//Edit jobs
 router.get('/edit/:id', (req, res) => {
-  console.log(req.params.id);
+  // console.log(req.params.id);
   // res.send(req.params.id);
   Job.findOne({
     where:
@@ -101,6 +101,45 @@ router.get('/edit/:id', (req, res) => {
     })
     .catch(err => console.log(err));
 
+
+
+});
+// PUT route for updating todos. We can get the updated todo data from req.body
+router.post("/edit/:id", function (req, res) {
+  // Update takes in an object describing the properties we want to update, and
+  // we use where to describe which objects we want to update
+  console.log("Test got called");
+  Job.update({
+    title: req.body.title,
+    description: req.body.description,
+    budget: req.body.budget,
+    job_status: req.body.job_status,
+    job_owner: req.body.job_owner
+  }, {
+      where: {
+        id: req.params.id
+      }
+    }).then(function (jobUpdate) {
+      Job.findAll()
+        .then(jobs => res.render('jobs', {
+          jobs
+        }))
+        .catch(err => console.log(err));
+
+    });
+});
+
+// DELETE route for deleting jobs. We can get the id of the job to be deleted from
+// req.params.id
+router.delete("/edit/:id", function (req, res) {
+  // We just have to specify which job we want to destroy with "where"
+  Job.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function (jobDelete) {
+    res.json(jobDelete);
+  });
 
 });
 
